@@ -1,0 +1,53 @@
+---
+title: "Project 3"
+author: "Jenny"
+date: "February 26, 2018"
+output: html_document
+---
+
+install.packages('ggplot2')
+
+##### Queions 1
+#####After a few building collapses, the City of New York is going to begin investigating older buildings for safety. The city is particularly worried about buildings that were unusually tall when they were built, since best-practices for safety hadn't yet been determined. Create a graph that shows how many buildings of a certain number of floors were built in each year (note: you may want to use a log scale for the number of buildings). Find a strategy to bin buildings (It should be clear 20-29-story buildings, 30-39-story buildings, and 40-49-story buildings were first built in large numbers, but does it make sense to continue in this way as you get taller?)
+
+
+```{r setup}
+
+library(ggplot2)
+
+# read file locally due to large file size
+
+bk <- read.csv("~/Project 2 Dataset/PLUTO17v1.1/BK2017V11.csv", header = TRUE)
+br <- read.csv("~/Project 2 Dataset/PLUTO17v1.1/BX2017V11.csv", header = TRUE)
+mn <- read.csv("~/Project 2 Dataset/PLUTO17v1.1/MN2017V11.csv", header = TRUE)
+qn <- read.csv("~/Project 2 Dataset/PLUTO17v1.1/QN2017V11.csv", header = TRUE)
+si <- read.csv("~/Project 2 Dataset/PLUTO17v1.1/SI2017V11.csv", header = TRUE)
+
+# Check if the dataset
+head(bk)
+head(br)
+head(mn)
+head(qn)
+head(si)
+
+# Since the question is only about number of floors, so we can subset the column "borogh" and "number of floors"
+sub_bk <- bk[c("Borough", "NumFloors")]
+sub_br <- br[c("Borough", "NumFloors")]
+sub_mn <- mn[c("Borough", "NumFloors")]
+sub_qn <- qn[c("Borough", "NumFloors")]
+sub_si <- si[c("Borough", "NumFloors")]
+
+# Combine the 5 borough dataset vertically using rbind
+nyc <- rbind(sub_bk, sub_br, sub_mn, sub_qn, sub_si)
+head(nyc)
+#View(nyc)
+
+# Remove the rows with 0 for number of floors.
+complete.cases(nyc$NumFloors)
+
+range(nyc$NumFloors)
+
+ggplot(nyc, aes(nyc$NumFloors)) +
+  geom_histogram(bins = 20)
+```
+
