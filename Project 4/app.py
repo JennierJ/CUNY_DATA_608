@@ -12,7 +12,7 @@ import dash_html_components as html
 import pandas as pd
 
 df = pd.read_csv(
-    'https://raw.githubusercontent.com/JennierJ/CUNY_DATA_608/master/Project%204/mean.csv')
+    'https://raw.githubusercontent.com/JennierJ/CUNY_DATA_608/master/Project%204/max.csv')
 
 def generate_table(dataframe, max_rows=1500):
     return html.Table(
