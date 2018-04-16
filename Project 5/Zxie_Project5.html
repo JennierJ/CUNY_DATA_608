@@ -1,0 +1,50 @@
+<html>
+
+<head><title>CUNY 608 Project 5</title></head>
+
+<body>
+
+<h1>Data 608 Project 5</h1>
+<h2>Words Reverse Program</h2>
+
+<script type="text/javascript">
+
+document.write('<p><b>The Program is to reverse any words that you type in.</b></p>');
+
+</script>
+
+<p id ="Reword"></p>
+
+<script>
+
+var yourword = prompt("Please type a word:");
+
+function reverseString(str) {
+    return str.split("").reverse().join("");
+    };
+
+document.getElementById("Reword").innerHTML = reverseString(yourword);
+
+</script>
+
+
+<input type="number" id="myNumber" value="2">
+<button onclick="myFunction()">Type 20 Multiples</button>
+
+<p id="demo"></p>
+
+
+<script>
+
+document.write('<p><b>The Program is to output 20 multiples of the number.</b></p>');
+
+function myFunction() {
+    var x = document.getElementById("myNumber").value;
+    document.getElementById("demo").innerHTML = x + "<br>" + x*2  + "<br>" + x*3  + "<br>" + x*4 + "<br>" + x*5 + "<br>" + x*6 + "<br>" + x*7 + "<br>" + x*8 + "<br>" + x*9 + "<br>" + x*10 + "<br>" + x*11 + "<br>" + x*12 + "<br>" + x*13 + "<br>" + x*14 + "<br>" + x*15 + "<br>" + x*16 + "<br>" + x*17 + "<br>" + x*18 + "<br>" + x*19;
+}
+
+</script>
+
+
+</body>
+</html>
