@@ -17,12 +17,25 @@ head(mydata)
 summary(mydata)
 ```
 
-## Including Plots
+##### Preliminary plots
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r plot}
+# pick a day 2015/01/01
+mydata_01_01_2015 <- subset(mydata, mydata$Sample.Date == "01/01/2015")
+View(mydata_01_01_2015)
+# What are the residual free chlorine during the day on 01/01/2015?
+plot(mydata_01_01_2015$Residual.Free.Chlorine..mg.L. ~ mydata_01_01_2015$Sample.Time)
+# What are the turbidity during the day on 01/01/2015?
+plot(mydata_01_01_2015$Sample.Time, mydata_01_01_2015$Turbidity..NTU.)
+# Analyze the regression relationship between residual free chlorine and turbidity
+liner <- lm(mydata_01_01_2015$Residual.Free.Chlorine..mg.L. ~ mydata_01_01_2015$Turbidity..NTU.)
+liner
+# Evaluate the quality of the model
+summary(liner)
+# Resudual Analysis
+plot(fitted(liner), resid(liner))
+qqnorm(resid(liner))
+qqline(resid(liner))
 ```
 
 
