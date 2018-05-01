@@ -1,0 +1,28 @@
+---
+title: "Data608_Project6"
+author: "Jenny"
+date: "April 30, 2018"
+output: html_document
+---
+
+##### Read the data
+```{r}
+mydata <- read.csv(url("https://raw.githubusercontent.com/JennierJ/CUNY_DATA_608/master/Final_Project/Drinking_Water_Quality_Distribution_Monitoring_Data.csv"))
+View(mydata)
+```
+
+##### Explore the data
+```{r}
+head(mydata)
+summary(mydata)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+
